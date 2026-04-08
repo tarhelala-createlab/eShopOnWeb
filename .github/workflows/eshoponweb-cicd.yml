@@ -1,8 +1,11 @@
 name: eShopOnWeb Build and Test
 
 #Triggers (uncomment line below to use it)
-on: workflow_dispatch
-
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  
 #Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
 env:
   RESOURCE-GROUP: rg-eshoponweb-Lala400
@@ -73,7 +76,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE400_CREDENTIALS }}
 
       # Deploy Azure WebApp using Bicep file
       - name: deploy
